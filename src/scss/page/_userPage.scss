@@ -1,0 +1,95 @@
+.window_user {
+	.title {
+		float:left;
+		font-weight:bold;
+	}
+	.l_ico_user {
+		float:right;
+		.ico {
+			vertical-align:middle;
+			margin-left:8px;
+		}
+		.ico_friend {
+			@include sprite($add-friend);
+			&.on {
+				@include sprite($remove-friend);
+			}
+		}
+	}
+
+	.s_user {
+		padding::$window_cell_padd;
+		border-top:1px solid #ccc;
+		&:first-child {
+			border-top:none;
+		}
+
+		.s_title {
+			padding-bottom:5px;
+			font-size:13px;
+			color:$point;
+		}
+		.s_list_wrap {
+			$m_top : 10px;
+			margin-top: -$m_top;
+			.l_user_wrap {
+				@extend %clear;
+				.l_user_list {
+					float:left;
+					width:50%;
+					@media screen and (max-width:$media_w){
+						float:none;
+						width:100%;
+					}
+
+					.user_list {
+						position:relative;
+						margin-top:$m_top;
+						padding-left:70px + 10px;
+						.link_content {
+							position:absolute;
+							left:0;
+						}
+						.l_user_txt {
+							display:table;
+							table-layout:fixed;
+							width:100%;
+							height:70px;
+
+							.b_user_txt {
+								display:table-cell;
+								vertical-align:middle;
+								padding-right:10px;
+
+								.user_cate,
+								.user_title,
+								.user_tag {
+									@include elip(1);
+								}
+								.user_cate {
+									color:#999;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.l_btn {
+			padding-top:20px;
+			text-align:center;
+
+			.btn_left,
+			.btn_right {
+				padding:2px;
+				border:1px solid #ccc;
+				line-height:12px;
+				.ico {
+					vertical-align:middle;
+				}
+			}
+		}
+
+	}
+}

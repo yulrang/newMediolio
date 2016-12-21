@@ -1,0 +1,98 @@
+@charset 'utf-8';
+
+/* common */
+.u_skip,
+.blind {
+    display: block;
+    overflow: hidden;
+    position: absolute;
+    top: -1000em;
+    left: 0;
+}
+.hide {
+	display:none;
+}
+
+/* select 기본 테마 */
+.l_select {
+	position:relative;
+	label {
+		display:block;
+		cursor:pointer;
+
+		&:after {
+			content:'';
+			position:absolute;
+			top:50%;
+			right:10px;
+			margin-top:-($down-grey12-height / 2);
+			@include sprite($down-grey12);
+		}
+		&.on:after {
+			@include sprite-position($up_grey12);
+		}
+	}
+	.opt_wrap {
+		display:none;
+		position:absolute;
+		left:0;
+		right:0;
+		z-index:1;
+		background:#fff;
+		border:1px solid #ccc;
+
+		&.on {
+			display:block;
+		}
+		> li {
+			border-top:1px solid #eee;
+			&:first-child {
+				border-top:none;
+			}
+			> a {
+				display:block;
+				padding:0 10px;
+				line-height:30px;
+				&:hover {
+					background:#eee;
+				}
+			}
+		}
+	}
+}
+
+// user 이름 클릭시 userPopup
+.l_user_pop {
+	position:absolute;
+	border:1px solid #ccc;
+	background:#fff;
+	.user_pop {
+		border-top:1px solid #eee;
+		&:first-child {
+			border-top:none;
+		}
+		&:hover {
+			background:#eee;
+		}
+		.link_user_pop {
+			display:block;
+			padding:0 10px;
+			line-height:20px;
+			font-size:12px;
+
+		}
+	}
+}
+
+// slide 테마
+.slide_container {
+	overflow:hidden;
+}
+.slide_wrap {
+	width:10000px;
+	@extend %clear;
+
+	.slide_list {
+		float:left;
+	}
+}

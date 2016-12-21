@@ -1,0 +1,191 @@
+@mixin util($height, $color, $space) {
+	@extend %clear;
+	line-height:$height;
+
+	//> li:not(:first-child) {
+	> li {
+		float:left;
+		padding-left:$space;
+		&:before {
+			content:'|';
+			display:inline-block;
+			vertical-align:top;
+			font-size:8px;
+			color:$color;
+			margin-right:$space;
+		}
+		&:first-child {
+			padding:0;
+			&:before {
+				content:none;
+			}
+		}
+		> a {
+			color:$color;
+		}
+	}
+}
+
+@mixin elip($line){
+	@if ($line == 1) {
+		display:block;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap;
+	}
+	@else if ($line > 1){
+		display:-webkit-box;
+		text-overflow:ellipsis;
+		overflow:hidden;
+		-webkit-box-orient:vertical;
+		-webkit-line-clamp:$line;
+	}
+}
+
+@mixin multiCol($padd:10px) {
+	display:table;
+	table-layout:fixed;
+	width:100%;
+
+	.l_emptyCol {
+		display:table-cell;
+		width:$padd;
+	}
+}
+
+@mixin place_hold($left, $height) {
+	display:none;
+	position:absolute;
+	top:0;
+	left:$left;
+	color:#999;
+	line-height:$height;
+	cursor:text;
+
+	&.on {
+		display:block;
+	}
+}
+
+@mixin arrow($width, $dir, $color){
+	width:0;
+	@if ($dir == top or $dir == bottom) {
+		border-left:($width/2) solid transparent;
+		border-right:($width/2) solid transparent;
+	}
+	@else if ($dir == left or $dir == right) {
+		border-top:($width/2) solid transparent;
+		border-bottom:($width/2) solid transparent;
+	}
+
+	@if ($dir == top) { border-bottom:$width*sqrt(3)/2 solid $color;}
+	@else if ($dir == bottom) { border-top:$width*sqrt(3)/2 solid $color;}
+	@else if ($dir == left) { border-right:$width*sqrt(3)/2 solid $color;}
+	@else if ($dir == right) { border-left:$width*sqrt(3)/2 solid $color;}
+}
+
+@mixin bubble($arrow_width, $pos, $dir, $back-color, $border-color:null) {
+	$arrow_pos : $arrow_width*sqrt(3)/2;
+
+	position:relative;
+	background:$back-color;
+
+	&:before, &:after {
+		content:'';
+		position:absolute;
+	}
+
+	@if ($border-color != null){	// if border exist
+		border:1px solid $border-color;
+		&:before {
+			@if ($dir == top){ top:-$arrow_pos - 1;}
+			@else if ($dir == bottom){ bottom:-$arrow_pos - 1; }
+			@else if ($dir == left){ left:-$arrow_pos - 1; }
+			@else if ($dir == right){ right:-$arrow_pos - 1; }
+
+			@if ( $dir == left or $dir == right ) { top:$pos; margin-top:-($arrow_width / 2 + 1); }
+			@if ( $dir == top or $dir == bottom ) { left:$pos; margin-left:-($arrow_width / 2 + 1); }
+
+			@include arrow($arrow_width + 2,$dir,$border-color);
+		}
+	}
+	&:after {
+		@if ($dir == top){ top:-$arrow_pos + 1;}
+		@else if ($dir == bottom){ bottom:-$arrow_pos + 1; }
+		@else if ($dir == left){ left:-$arrow_pos + 1; }
+		@else if ($dir == right){ right:-$arrow_pos + 1; }
+
+		@if ( $dir == left or $dir == right ) { top:$pos; margin-top:-($arrow_width / 2);}
+		@if ( $dir == top or $dir == bottom ) { left:$pos; margin-left:-($arrow_width / 2); }
+
+		@include arrow($arrow_width,$dir,$back-color);
+	}
+
+}
+
+@mixin arrow($width, $dir, $color){
+	width:0;
+	@if ($dir == top or $dir == bottom) {
+		border-left:($width/2) solid transparent;
+		border-right:($width/2) solid transparent;
+	}
+	@else if ($dir == left or $dir == right) {
+		border-top:($width/2) solid transparent;
+		border-bottom:($width/2) solid transparent;
+	}
+
+	@if ($dir == top) { border-bottom:$width*sqrt(3)/2 solid $color;}
+	@else if ($dir == bottom) { border-top:$width*sqrt(3)/2 solid $color;}
+	@else if ($dir == left) { border-right:$width*sqrt(3)/2 solid $color;}
+	@else if ($dir == right) { border-left:$width*sqrt(3)/2 solid $color;}
+}
+
+
+@mixin bubble($arrow_width, $pos, $dir, $back-color, $border-color:null) {
+	$arrow_pos : $arrow_width*sqrt(3)/2;
+
+	position:relative;
+	background:$back-color;
+
+	&:before, &:after {
+		content:'';
+		position:absolute;
+	}
+
+	@if ($border-color != null){	// if border exist
+		border:1px solid $border-color;
+		&:before {
+			@if ($dir == top){ top:-$arrow_pos - 1;}
+			@else if ($dir == bottom){ bottom:-$arrow_pos - 1; }
+			@else if ($dir == left){ left:-$arrow_pos - 1; }
+			@else if ($dir == right){ right:-$arrow_pos - 1; }
+
+			@if ( $dir == left or $dir == right ) { top:$pos; margin-top:-($arrow_width / 2 + 1); }
+			@if ( $dir == top or $dir == bottom ) { left:$pos; margin-left:-($arrow_width / 2 + 1); }
+
+			@include arrow($arrow_width + 2,$dir,$border-color);
+		}
+	}
+	&:after {
+		@if ($dir == top){ top:-$arrow_pos + 1;}
+		@else if ($dir == bottom){ bottom:-$arrow_pos + 1; }
+		@else if ($dir == left){ left:-$arrow_pos + 1; }
+		@else if ($dir == right){ right:-$arrow_pos + 1; }
+
+		@if ( $dir == left or $dir == right ) { top:$pos; margin-top:-($arrow_width / 2);}
+		@if ( $dir == top or $dir == bottom ) { left:$pos; margin-left:-($arrow_width / 2); }
+
+		@include arrow($arrow_width,$dir,$back-color);
+	}
+
+}
+
+
+
+// 함수
+@function sqrt($n, $a: $n/2, $e: .001) {
+	@if ($n - $a*$a > $e or $a*$a - $n > $e) {
+		@return sqrt($n, ($a + $n/$a)/2, $e);
+	}
+	@else { @return $a; }
+}

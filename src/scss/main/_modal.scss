@@ -1,0 +1,194 @@
+/* modal */
+
+$modal_padd : 30px;
+
+.modal_login,
+.modal_join {
+	.modal {
+		width:340px;
+		padding:$modal_padd;
+	}
+	.inp_wrap {
+		padding-top:10px;
+		@include multiCol(10px);
+
+		.l_multiCol {
+			display:table-cell;
+		}
+		.inp_box {
+			position:relative;
+			padding-left:40px;
+			background:#eee;
+
+			.inp_modal {
+				box-sizing:border-box;
+				width:100%;
+				height:40px;
+				padding:0 10px;
+				background:transparent;
+				line-height:40px;
+			}
+			.place_hold {
+				@include place_hold(40px + 10px, 40px);
+			}
+		}
+		.inp_ico {
+			position:absolute;
+			left:0;
+			width:40px;
+			height:40px;
+			background-color:#555;
+			text-align:center;
+			@extend %valign;
+			.ico {
+				vertical-align:middle;
+			}
+		}
+	}
+
+	.btn_wrap {
+		padding-top:20px;
+		.btn_modal_ok {
+			@include btn_theme2(#555, #fff, none);
+		}
+		.btn_modal_join {
+			@include btn_theme2(#fff, #666, #ccc);
+		}
+	}
+}
+
+/* modal_login */
+.modal_login {
+	.login_txt {
+		color:#666;
+		text-align:right;
+		.ico_facebook {
+			vertical-align:middle;
+			margin-left:5px;
+		}
+	}
+	.find_pw {
+		padding:20px 0 10px;
+		border-bottom:1px solid #ccc;
+		.link_find_pw {
+			color:#666;
+			&:hover {
+				color:#000;
+			}
+		}
+	}
+}
+
+/* modal_join */
+.modal_join {
+	.join_title {
+		font-size:16px;
+	}
+	.label_gender {
+		display:inline-block;
+		height:40px;
+		line-height:40px;
+	}
+
+}
+
+
+/* modal_note */
+.modal_note {
+	.modal {
+		width:600px;
+
+		.l_submit_note {
+			@include btn_theme3(submit_note, 15px);
+			float:right;
+			margin-top:10px;
+		}
+		.l_inp_receive {
+			position:relative;
+			border-bottom:1px solid #ccc;
+			.ph_receive_note {
+				@include place_hold($window_cell_padd, 40px);
+			}
+		}
+		.inp_receive,
+		.txt_note {
+			box-sizing:border-box;
+			width:100%;
+			height:40px;
+			padding:0 $window_cell_padd;
+		}
+		.txt_note {
+			height:300px;
+			padding:10px $window_cell_padd;
+		}
+	}
+}
+
+
+
+
+
+/* common modal theme */
+.modal_wrap {
+	$wrap_padd : 40px;
+	display:none;
+	position:fixed;
+	overflow-y:auto;
+	width:100%;
+	height:100%;
+	padding:$wrap_padd 0;
+	box-sizing:border-box;
+	z-index:1000;
+	font-family:'Open Sans','Nanum Gothic', sans-serif;
+
+	&.on {
+		display:block;
+	}
+
+	.modal_box {
+		display:table;
+		width:100%;
+		position:relative;
+		min-height:100%;
+
+		.modal_container {
+			display:table-cell;
+			vertical-align:middle;
+			text-align:center;
+
+			// bg만 독립적으로 클릭되어야하므로 absolute
+			.modal_bg {
+				position:absolute;
+				top:-$wrap_padd;
+				bottom:-$wrap_padd;
+				width:100%;
+				background:#000;
+				opacity:.5;
+				filter:alpha(opacity=50);
+				cursor:pointer;
+			}
+
+
+		}
+	}
+	.modal {
+		position:relative;
+		display:inline-block;
+		background:#fff;
+		z-index:1;
+		text-align:left;
+
+
+		@media screen and (max-width : $media_w){
+			box-sizing:border-box;
+			width:95%;
+		}
+	}
+
+	.modal_hd {
+		padding:0 $window_cell_padd;
+		background:$point;
+		color:#fff;
+		line-height:$window_cell_h;
+	}
+}

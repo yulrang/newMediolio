@@ -1,0 +1,90 @@
+.note_window {
+	padding-top:90px;
+
+	.l_window_hd {
+		.window_hd {
+			padding:0;
+		}
+		.l_note_tab {
+			float:left;
+			width:60%;
+
+			.tab_note {
+				float:left;
+				width:50%;
+				height:$window_cell_h;
+				color:#fff;
+				&.on {
+					background:#fff;
+					color:#333;
+				}
+			}
+		}
+		.l_send_note {
+			@include btn_theme3(send_note, 10px);
+			float:right;
+			margin:10px $window_cell_padd 0 0;
+		}
+	}
+	.l_window_content {
+		box-sizing:border-box;
+		padding:0 $window_cell_padd 40px;
+
+		.note_list {
+			position:relative;
+			margin-top:20px;
+			padding:$window_cell_padd;
+			padding-bottom:40px;
+			border:1px solid #ccc;
+
+			&:first-child {
+				margin-top:0;
+			}
+			&:hover .chk_more.on {
+				display:block;
+			}
+			.note_hd {
+				position:relative;
+				padding:0 90px 20px 0;
+
+				.note_user {
+					position:relative;
+					font-size:14px;
+					.link_user_pop {
+						@include elip(1);
+						display:inline-block;
+						max-width:100%;
+					}
+				}
+				.note_date {
+					color:#999;
+				}
+
+				.l_btn_note {
+					position:absolute;
+					right:0;
+					top:0;
+					.btn_note {
+						@include sprite($circle34-ccc);
+						width:35px;
+						margin-left:2px;
+						color:#666;
+						font-size:11px;
+					}
+				}
+			}
+			.note_content.elip {
+				@include elip(4);
+				word-break:break-all;
+			}
+			.chk_more {
+				display:none;
+				position:absolute;
+				right:$window_cell_padd;
+				bottom:$window_cell_padd;
+				cursor:pointer;
+				color:$point;
+			}
+		}
+	}
+}

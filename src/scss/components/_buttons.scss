@@ -1,0 +1,100 @@
+
+// @mixin btn_rad($rad, $height, $left, $right, $bg, $border:none) {
+// 	position:relative;
+//
+// 	&:before,
+// 	&:after {
+// 		position:absolute;
+// 		top:0;
+// 		content:'';
+// 		z-index:0;
+// 	}
+// 	&:before {
+// 		left:0;
+// 		@include sprite($left);
+// 	}
+// 	&:after {
+// 		right:0;
+// 		@include sprite($right);
+// 	}
+// 	.rad {
+// 		&:before {
+// 			position:absolute;
+// 			left:$rad / 2;
+// 			right:$rad / 2;
+// 			top:0;
+// 			bottom:0;
+// 			content:'';
+// 			background:$bg;
+// 			border-top:1px solid $border;
+// 			border-bottom:1px solid $border;
+// 		}
+// 		.rad_content {
+// 			position:relative;
+// 			line-height:$height;
+// 			z-index:1;
+//
+// 		}
+// 	}
+// }
+
+//@include btn_rad(30px, 30px, $rad30_left, $rad30_right, #555);
+
+
+// height와 radius가 동일한 둥근 타원형 버튼
+@mixin btn_theme1($rad, $bg, $border, $color){
+	height:$rad;
+	padding:0 10px;
+	border-radius:$rad;
+	background:$bg;
+	border:1px solid $border;
+	color:$color;
+}
+
+// modal에 들어가는 직사각형 플랫 버튼
+@mixin btn_theme2($bg, $color, $border){
+	width:100%;
+	height:40px;
+	background:$bg;
+	color:$color;
+	border:1px solid $border;
+	font-family:'Open Sans', sans-serif;
+	font-size:14px;
+}
+
+@mixin btn_theme3($btn, $padd){
+	position:relative;
+	padding-left:$padd;
+	padding-right:$padd;
+	line-height:30px;
+
+	&:before {
+		content:'';
+		position:absolute;
+		top:0;
+		left:$rad30-left-wb-width;
+		right:$rad30-left-wb-width;
+		height:30px;
+		@include sprite_bg($rad30-center-wb);
+	}
+	.#{$btn}{
+		position:relative;
+		line-height:30px;
+		color:#fff;
+		z-index:0;
+
+		&:before, &:after {
+			content:'';
+			position:absolute;
+			top:0;
+		}
+		&:before {
+			left:-$padd;
+			@include sprite($rad30-left-wb);
+		}
+		&:after {
+			right:-$padd;
+			@include sprite($rad30-right-wb);
+		}
+	}
+}

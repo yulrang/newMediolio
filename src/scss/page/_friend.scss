@@ -1,0 +1,74 @@
+.window_friend {
+	padding-top:100px;
+}
+.following_wrap,
+.follower_wrap {
+	display:none;
+	&.on {
+		display:block;
+	}
+}
+.friend_list {
+	display:table;
+	table-layout:fixed;
+	box-sizing:border-box;
+	width:100%;
+	padding:$window_cell_padd;
+	border-top:1px solid #ccc;
+	&:first-child {
+		border-top:none;
+	}
+
+	.l_friend_txt,
+	.l_friend_img {
+		display:table-cell;
+	}
+	.l_friend_txt {
+		vertical-align:middle;
+
+		@media screen and (max-width : $media_w){
+			display:block;
+		}
+
+		.friend_name {
+			font-size:14px;
+		}
+		.del_friend {
+			margin-left:5px;
+			width:15px;
+			height:15px;
+			border:1px solid $point;
+			color:$point;
+			&:hover {
+				background:$point;
+				color:#fff;
+			}
+		}
+		.friend_intro {
+			@include elip(2);
+		}
+		.friend_like {
+			color:#999;
+		}
+	}
+	.l_friend_img {
+		width:270px;
+
+		.friend_img {
+			display:inline-block;
+			margin-left:6px;
+		}
+
+		@media screen and (max-width : $media_w){
+			@include multiCol(10px);
+			padding-top:10px;
+
+			.friend_img {
+				display:table-cell;
+				img {
+					width:100%;
+				}
+			}
+		}
+	}
+}

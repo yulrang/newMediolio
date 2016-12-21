@@ -1,0 +1,23 @@
+@charset 'utf-8';
+@import "base/_reset.scss";
+@import "base/_variables.scss";
+@import "base/_mixin.scss";
+@import "base/_placeholder.scss";
+
+@import "references/_sprite.scss";
+@import "references/_icons.scss";
+@import "components/_buttons.scss";
+
+@import "base/_common.scss";
+@import "main/_layout.scss";
+@import "main/_header.scss";
+@import "main/_nav.scss";
+@import "main/_modal.scss";
+
+@import "page/_index.scss";
+@import "page/_friend.scss";
+@import "page/_note.scss";
+@import "page/_view.scss";
+@import "page/_search.scss";
+@import "page/_userPage.scss";
+@import "page/_write.scss";

@@ -1,0 +1,128 @@
+html,body {
+	height:100%;
+	font-size:12px;
+}
+.mediolio_wrap {
+	font-family:'Open Sans','Nanum Gothic', sans-serif;
+}
+header {
+	position:fixed;
+	left:0;
+	right:0;
+	z-index:100;
+	background:$header_bg;
+}
+
+aside {
+	position:fixed;
+	left:0;
+	top:$header_height;
+	bottom:0;
+	z-index:100;
+	width:$aside_width;
+	background:$aside_bg;
+}
+@media screen and (max-width:$media_w){
+	aside,
+	.l_bell,
+	.btn_login {
+		display:none;
+	}
+}
+
+.rmcn_top,
+.rmcn_bottom {
+	position:fixed;
+	right:30px;
+	text-indent:-100px;
+	overflow:hidden;
+	z-index:1000;
+}
+.rmcn_top {
+	@include sprite($rmcn_up);
+	bottom:20px + $rmcn-up-height;
+}
+.rmcn_bottom {
+	@include sprite($rmcn_down);
+	bottom:20px;
+}
+
+.container {
+	position:absolute;
+	left:$aside_width;
+	right:0;
+	top:$header_height;
+	bottom:0;
+	overflow-y:auto;
+	padding:10px;
+	background:$container_bg;
+
+	@media screen and (max-width : $media_w){
+		top:$header_height;
+		left:0;
+		padding:10px;
+	}
+}
+.window {
+	position:relative;
+	box-sizing:border-box;
+	height:100%;
+	padding-top:$window_cell_h;
+	background:#fff;
+	border:1px solid #ddd;
+	border-color: #ccc #bbb #aaa #ccc;
+
+	@media screen and (max-width : $media_w){
+		margin-right:0;
+	}
+
+	.window_hd,
+	.window_tab {
+		line-height:$window_cell_h;
+		height:$window_cell_h;
+	}
+
+	.l_window_hd {
+		position:absolute;
+		top:0;
+		width:100%;
+		.window_hd {
+			padding:0 $window_cell_padd;
+			background:$point;
+			color:#fff;
+			.title {
+				font-size:14px;
+			}
+		}
+		.l_window_tab {
+			@extend %clear;
+			border-bottom:1px solid #ccc;
+			.window_tab {
+				position:relative;
+				float:left;
+				width:50%;
+
+				&.on:after {
+					content:'';
+					position:absolute;
+					left:0;
+					right:0;
+					bottom:-1px;
+					border-bottom:2px solid $point;
+				}
+			}
+		}
+	}
+	.l_window_content {
+		min-height:100%;
+		margin:0 -1px 10px;
+		background:#fff;
+		border-bottom:1px solid #aaa;
+		border-left:1px solid #ccc;
+		border-right:1px solid #bbb;
+	}
+	.l_window_ft {
+		border-left:1px solid #ccc;
+		border-right:1px solid #bbb;
+	}
+}

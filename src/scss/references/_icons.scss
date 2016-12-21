@@ -1,0 +1,13 @@
+@mixin sprite_bg($sprite) {
+	@include sprite-image($sprite);
+	@include sprite-position($sprite);
+}
+
+@each $sprite in $spritesheet-sprites {
+	.ico_#{nth($sprite, 10)} {
+		display:inline-block;
+		@include sprite($sprite);
+		text-indent : -400px;
+		overflow:hidden;
+	}
+}

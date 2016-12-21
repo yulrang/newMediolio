@@ -1,0 +1,54 @@
+.window_search {
+	background:transparent;
+	border:none;
+	.window {
+		display:table;
+		table-layout:fixed;
+		width:100%;
+		margin-top:10px;
+		&:first-child {
+			margin-top:0;
+		}
+	}
+	.l_window_hd {
+		text-align:center;
+		.ico {
+			@include sprite($search-white);
+			display:inline-block;
+			vertical-align:middle;
+			margin-right:5px;
+		}
+	}
+	.l_window_content {
+		background:transparent;
+		border:none;
+		.window {
+			padding-top:0;
+		}
+	}
+	.content_h,
+	.content_b {
+		display:table-cell;
+	}
+	.content_h {
+		width:100px;
+		.link_content {
+			display:block;
+		}
+	}
+	.content_b {
+		padding:0 10px;
+		vertical-align:middle;
+
+		.title {
+			@include elip(1);
+		}
+		.user {
+			display:block;
+			padding:5px 0;
+		}
+		.content {
+			@include elip(2);
+		}
+	}
+}

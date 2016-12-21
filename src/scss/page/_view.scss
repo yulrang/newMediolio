@@ -1,0 +1,261 @@
+.window_view {
+	$content_w : 70%;
+	$content_padd : 30px;
+	$m_content_padd : 20px;
+
+	display:flex;
+	flex-direction:row;
+	position:relative;
+	width:100%;
+	height:auto;
+	min-height:100%;
+	padding-top:0;
+
+	.l_view_content,
+	.l_view_info {
+		position:relative;
+	}
+	.l_view_content {
+		display:flex;
+		flex-direction:column;
+		justify-content:space-between;
+		width:$content_w;
+		box-sizing:border-box;
+
+		@media screen and (max-width:$media_w){
+			width:100%;
+		}
+	}
+	.user_info,
+	.project_info {
+		padding:$window_cell_padd;
+	}
+	.b_view_content,
+	.b_view_tag,
+	.b_view_reply {
+		padding:$content_padd;
+		@media screen and (max-width:$media_w){
+			padding:$m_content_padd;
+		}
+	}
+
+	.view_hd {
+		position:relative;
+		padding-right:$heart-before-width + 10px;
+		padding-bottom:20px;
+		.view_cate,
+		.view_title {
+			@include elip(1);
+		}
+		.view_cate {
+			color:#999;
+		}
+		.view_title {
+			padding:10px 0 5px;
+			font-size:18px;
+			font-weight:bold;
+		}
+		.content_info {
+			@include util(20px, #333, 5px);
+		}
+		.l_view_heart {
+			position:absolute;
+			right:0;
+			top:0;
+			.view_heart {
+				@include sprite($heart-before);
+				text-indent:-100px;
+				overflow:hidden;
+
+				&.on {
+					@include sprite($heart-after);
+				}
+			}
+			.heart_num {
+				display:block;
+				text-align:center;
+			}
+		}
+	}
+
+
+	.b_view_tag {
+		@extend %clear;
+		.tag_title {
+			font-size:14px;
+			font-weight:bold;
+		}
+		.l_view_tag {
+			float:left;
+			position:relative;
+			margin:5px 18px 0 8px;
+			&:first-child {
+			}
+			&:before {
+				content:'';
+				position:absolute;
+				left:$rad8-l-width;
+				right:$rad8-r-width;
+				height:30px;
+			}
+			.view_tag {
+				display:inline-block;
+				position:relative;
+				line-height:30px;
+				color:#fff;
+				z-index:0;
+				background:#999;
+
+				&:before, &:after {
+					content:'';
+					position:absolute;
+					top:0;
+				}
+				&:before {
+					left:-$rad8-l-width;
+					@include sprite($rad8-l);
+				}
+				&:after {
+					right:-$rad8-r-width;
+					@include sprite($rad8-r);
+				}
+			}
+		}
+	}
+	.b_view_reply {
+		border-top:1px solid #ccc;
+		.reply {
+			padding-bottom:20px;
+		}
+		.reply_hd {
+			@extend %clear;
+			padding-bottom:5px;
+			border-bottom:1px solid #ccc;
+			.reply_user {
+				float:left;
+				> .link_user_pop {
+					font-weight:bold;
+					font-size:13px;
+				}
+				.del_reply {
+					width:14px;
+					margin-left:2px;
+					line-height:14px;
+					background:#666;
+					color:#fff;
+				}
+			}
+			.reply_date {
+				float:right;
+				color:#999;
+			}
+		}
+		.reply_content {
+			padding:5px 0;
+		}
+		.l_inp_reply {
+			@extend %clear;
+			position:relative;
+
+			.label_reply {
+				@include place_hold(10px, 60px);
+			}
+			.txt_reply,
+			.inp_reply {
+				float:left;
+				height:60px;
+			}
+			.txt_reply {
+				box-sizing:border-box;
+				width:80%;
+				padding:10px;
+				background:#eee;
+			}
+			.inp_reply {
+				width:20%;
+				background:$point;
+				color:#fff;
+			}
+		}
+	}
+
+
+
+	// view 오른쪽 글 정보
+	.l_view_info {
+		width:100% - $content_w;
+		background:#f5f5f5;
+		@media screen and (max-width:$media_w){
+			display:none;
+		}
+		&:before {
+			content:'';
+			position:absolute;
+			left:0;
+			top:0;
+			bottom:0;
+			width:1px;
+			border-left:1px solid #ccc;
+		}
+		.user_info {
+			background:#fff;
+			.user_intro {
+				padding:5px 0;
+			}
+		}
+		.project_info {
+			border-top:1px solid #ccc;
+
+			.s_info {
+				border-top:1px solid #ccc;
+				&:first-child {
+					padding-bottom:15px;
+					border-top:0;
+				}
+			}
+			.team_name,
+			.team_info {
+				float:left;
+			}
+			.team_name {
+				padding-right:5px;
+				> .link_user_pop {
+					font-weight:bold;
+				}
+				&:after {
+					content:'|';
+					padding-left:5px;
+					font-size:10px;
+					color:#999;
+					line-height:12px;
+				}
+			}
+			.team_detail {
+				padding:2px 0 6px;
+				color:#666;
+			}
+		}
+
+		// 공통
+		.s_info {
+			padding-top:15px;
+			&:first-child {
+				padding-top:0;
+			}
+		}
+		.info_title {
+			padding-bottom:5px;
+			font-size:14px;
+		}
+		.d_title {
+			float:left;
+			padding-right:10px;
+			color:#777;
+		}
+		.d_def {
+			overflow:hidden;
+		}
+	}
+
+
+}
